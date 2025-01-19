@@ -1,7 +1,11 @@
 from django.shortcuts import render
-
+from home.models import Education
 # Create your views here.
 
 
 def home(request):
-    return render(request, 'home.html')
+    myeducations = Education.objects.all()
+    context = {
+        "educations": myeducations
+    }
+    return render(request, 'home.html', context)
