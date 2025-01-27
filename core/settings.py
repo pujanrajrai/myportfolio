@@ -14,7 +14,11 @@ SECRET_KEY = 'django-insecure-9wh5u!!ajr09#_73_t%o7j*a*!!gxhcns%qcb(%%+cqik*uz#x
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '0.0.0.0',
+    '127.0.0.1',
+    'localhost',
+]
 
 
 # Application definition
@@ -27,10 +31,20 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    # django apps
-    'home',
+]
+
+THIRDPARTY_APPS = [
 
 ]
+
+
+DJANGO_APPS = [
+    # django apps
+    'home',
+    'blog',
+]
+
+INSTALLED_APPS = INSTALLED_APPS+DJANGO_APPS+THIRDPARTY_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -123,3 +137,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+MEDIA_URL = '/media/'  # URL to access media files
